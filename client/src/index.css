@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    color: #cf944d;
+}
+#heading {
+    background-image: url('https://breweryprintshoppe.com/wp-content/uploads/2017/12/brewery-print-shoppe-background-keg-beer.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.image {
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+}
+.mb-3 {
+    padding: 60px;
+}
+.lineBreak {
+    border: 1px solid #eb6864;
+    width: 50%;
+}
+#shopDiv {
+    width: 115px;
+    padding: 10px;
+    border: 2px solid #ffff;
+    border-radius: 15px;
+    -moz-border-radius: 15px;  
+}
