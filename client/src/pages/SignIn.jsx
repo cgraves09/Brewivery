@@ -4,6 +4,8 @@ import { Redirect } from 'react-router';
 import Account from './Account';
 export default class SignUp extends Component {
     state = {
+      top: '-100',
+      message: '',
       signEmail: '',
       signPass: '',
       firstNam: '',
@@ -11,6 +13,7 @@ export default class SignUp extends Component {
       email: '',
       password: '',
       phone: '',
+      birthDate: '',
       redirect: false
     }
     handleFirstName = (e) => {
@@ -34,17 +37,43 @@ export default class SignUp extends Component {
     handleSignInPassword = (e) => {
         this.setState({ signPass: e.target.value });
     }
+    handleBirthday = (e) => {
+        this.setState({ birthDate: e.target.value });
+    }
     handleCreateAccount = e => {
         e.preventDefault();
-        const { firstNam, lastNam, email, password, phone } = this.state
-        axios.post('/api/clients', 
-            {
-                firstNam: firstNam,
-                lastNam: lastNam,
-                email: email,
-                phone: phone,
-                password: password
-            }).then(res => window.location.reload(false))
+        const { firstNam, lastNam, email, password, phone, birthDate } = this.state
+        if(firstNam === '' || lastNam === '' || email === '' || password === '' || phone === '' || birthDate === ''){
+            this.setState({message: 'Please fill out all of the fields', top: '16'});
+            setTimeout(() => {
+                this.setState({message: '', top: '-100'});
+            }, 3000);       
+        }
+        axios.get(`/api/clients/${email}`).then(res => {
+            if (res.data.message === 'Account already exist'){
+                this.setState({message: 'Email already exist', top: '16'});
+                setTimeout(() => {
+                    this.setState({message: '', top: '-100'});
+                }, 3000);
+                return false;    
+            }
+            else {
+                axios.post('/api/clients', 
+                            {
+                                firstNam: firstNam,
+                                lastNam: lastNam,
+                                email: email,
+                                phone: phone,
+                                password: password,
+                                birthDate: birthDate
+                            }).then(res => {
+                                    this.setState({message: 'Account Created', top: '16'});
+                                    setTimeout(() => {
+                                        window.location.reload(false);
+                                    }, 2000);
+                            });        
+            }
+        })
     }
 
     handleSignIn = e => {
@@ -54,8 +83,14 @@ export default class SignUp extends Component {
             {
                 email: signEmail,
                 password: signPass
-            }).then(res => {
-                this.setState({ redirect: true })    
+            }).then(res => this.setState({ redirect: true }))
+            .catch(err => {
+                if (err) {
+                    this.setState({message: 'Incorrect Username or password', top: '16'});
+                    setTimeout(() => {
+                        this.setState({message: '', top: '-100'});
+                    }, 3000);
+                }
             })
     }
 
@@ -67,6 +102,16 @@ export default class SignUp extends Component {
      }
     return (
             <div>
+                <div style={{backgroundColor: '#444',
+                    color: '#ffff',
+                    padding: '16px',
+                    position: 'absolute',
+                    right: '16px',
+                    top: `${this.state.top}px`,
+                    zIndex: '999',
+                    transition: 'top 0.5s ease'}}> 
+                    {this.state.message}
+                </div>
                 <div style={{height: '50vw', width: '100vw'}} className="row">
                     <div 
                     style={{
@@ -103,7 +148,7 @@ export default class SignUp extends Component {
                             </div>
                             <div className="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3  className="register-heading">Create Account</h3>
-                                <div className="row register-form">
+                                <div id='signIn-form' className="row register-form">
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <input type="text" className="form-control" placeholder="First Name *" name='firstNam' value={this.state.value} onChange={this.handleFirstName}  />
@@ -123,6 +168,11 @@ export default class SignUp extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <input type="password" className="form-control" placeholder="Password *" name='password' value={this.state.value} onChange={this.handlePassword}  />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <input type="date" className="form-control" placeholder="Birthday" name='birthDate' value={this.state.value} onChange={this.handleBirthday}  />
                                         </div>
                                     </div>
                                     <button type="button" className="btn btn-primary btn-lg btn-block" onClick={this.handleCreateAccount}>Create your account</button>

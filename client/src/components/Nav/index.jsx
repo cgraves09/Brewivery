@@ -15,6 +15,11 @@ function Nav (props) {
                             fontWeight: '300',
                             fontSize: '90px'
                         }}>Brewivery</h1>
+                        <hr className="lineBreak"/>
+                        <h3 style={{
+                            color: '#ffff',
+                            fontStyle: 'italic'
+                        }}>Handcrafted Brews Delivered...</h3>
                     </div>
                     <div  className="col-md-4">
                         <a href="/signin">

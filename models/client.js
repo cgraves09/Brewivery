@@ -22,6 +22,10 @@ const clientSchema = new Schema({
     type: String,
     default: ''
   },
+  birthDate: {
+    type: String,
+    default: ''
+  },
   cooler: [{
     beerName: String,
     beerType: String,

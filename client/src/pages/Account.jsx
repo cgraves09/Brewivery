@@ -5,12 +5,15 @@ import API from '../utils/API';
 import { Redirect } from 'react-router';
 import {WrappedMap, Brewery} from '../components/GoogleMap/';
 import selfImg from '../images/hops.png';
+import logo from '../images/hops.png';
 import AccountNav from '../components/AccountNav';
 const REACT_APP_GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 class Account extends Component {
  constructor(props) {
         super(props);
         this.state = {
+            message: '',
+            top: '-100',
             id: '',
             firstNam: '',
             lastNam: '',
@@ -21,10 +24,13 @@ class Account extends Component {
             cooler: [],
             button: <h3> FILL THE COOLER, WE'LL GRAB THE ICE </h3>,
             checkout: false,
-            total: 0
+            total: 0,
+            loggedOut: false,
+            loadingMessage: ''
         };
     }
     componentDidMount(){
+        this.setState({loadingMessage: 'Loading all of that cool account info!'});
         setTimeout(() => {
         Brewery()
         this.UserInfo();
@@ -99,6 +105,18 @@ class Account extends Component {
     checkOut = () => {
         this.setState({checkout: true});
     }
+    signOut = () => {  
+      axios.get('/api/logout').then(res => {
+        if (res.data.message === 'signed out'){
+            this.setState({message: 'Signing you out!', top: '16'});
+            console.log('test')
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 2000);            
+        }
+                            
+      });
+    }
 
   render() {
         if (this.state.checkout) {
@@ -121,27 +139,45 @@ class Account extends Component {
               textAlign: 'center',
               borderRadius: '50px',
               marginTop: '10%'}}> 
-            <h1 
-              style={{
-                color: '#ffff', 
-                fontWeight: '300',
-                paddingTop: '30px'}}
-            >
-                Loading all of that cool account info!
-              </h1>
             <img className='App-logo' src={selfImg} alt=""/>
             </div>
             </div>
             )
         }
         if (!this.state.isAuth){
-          return <Redirect  to='/signIn'/>;
+          return <Redirect  to='/'/>;
           }
         
         else{
           return (
                   <div>
-                    <AccountNav />
+                    <div style={{backgroundColor: '#444',
+                        color: '#ffff',
+                        padding: '16px',
+                        position: 'absolute',
+                        right: '16px',
+                        top: `${this.state.top}px`,
+                        zIndex: '999',
+                        transition: 'top 0.5s ease'}}> 
+                        {this.state.message}
+                    </div>
+                    <div className="row" style={{backgroundColor: '#cf944d', textAlign: 'center'}}>
+                        <div className="col-md-4">
+                            <a className="navbar-brand" href="/">
+                                <img src={logo} width="100" height="100" alt="" loading="lazy" />
+                            </a>                    
+                        </div>
+                        <div className="col-md-4">
+                            <h1 style={{
+                                color: '#ffff',
+                                fontWeight: '300',
+                                fontSize: '90px'
+                            }}>Brewivery</h1>
+                        </div>
+                        <div  className="col-md-4">
+                                <button style={{textAlign: 'center',marginTop: '6%'}} className='btn btn-primary btn-lg' onClick={() => this.signOut()} tabIndex="-1" aria-disabled="true">Sign Out</button>                
+                        </div>
+                    </div>
                     <div className="container">
                         <div className="card" style={{textAlign: 'center', background: 'black'}}>
                           <div className="card-body">
@@ -197,8 +233,10 @@ class Account extends Component {
                               <hr className="lineBreak"/>
                               { 
                                 this.state.cooler.map(beer => {
-                                  return( <div style={{padding: '15px', border: '1px solid #ffff'}}>
-                                      <h5 key={beer._id}>{beer.beerName}</h5> 
+                                  return( 
+                                  <div style={{padding: '15px', border: '1px solid #ffff'}}>
+                                      <h5 key={beer._id}>{beer.beerName}</h5>
+                                      <h6>{beer.beerPrice}</h6> 
                                       <button 
                                         onClick={() => this.deleteItem(beer._id)} 
                                         type="button" className="btn btn-primary btn-lg">

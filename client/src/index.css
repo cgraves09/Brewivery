@@ -3,6 +3,11 @@ body {
     color: #cf944d;
     font-weight: '300';
 }
+h1,
+h2,
+h3 {
+    font-weight: 300;
+}
 #heading {
     background-image: url('https://breweryprintshoppe.com/wp-content/uploads/2017/12/brewery-print-shoppe-background-keg-beer.jpg');
     background-size: cover;

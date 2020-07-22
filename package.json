@@ -33,6 +33,7 @@
     "mongoose": "^5.9.20",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "react-advanced-form": "^1.7.2",
     "react-bootstrap": "^1.0.1"
   }
 }
