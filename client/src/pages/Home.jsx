@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Jumbotron from "../components/Jumbotron";
 import AgeModal from '../components/AgeModal';
 import API from '../utils/API';
+import Nav from '../components/Nav';
+import reviewOne from '../images/homepage_roof.jpeg';
+import logo from '../images/hops.png';
+import secondImg from '../images/secondJumbo.jpg';
 export default class Home extends Component {
     state = {
         beers: [],
@@ -25,41 +29,100 @@ export default class Home extends Component {
         }else{
             return (
                 <div> 
-                    <AgeModal />           
+                    {/* <AgeModal /> */}
+                    <Nav />           
                     <div className="jumbotron" style={{height: '400px'}} id="heading" >
                         <div className="row">
                             <div className="col-md-6">
-                                <h1 style={{color: '#ffff'}}>Brewivery</h1>
                                 <h3 style={{color: '#cf944d'}}>Brewery delivery in West Palm Beach, FL</h3>                        
                             </div>
-                            <div className="col-md-6">
-
-                            </div>
+                            <div className="col-md-8"></div>
                         </div>
-
                     </div>
                     <Jumbotron>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <h1>How do I get my Brewskis?</h1>
-                                <hr className='lineBreak'/>
-                            </div>
-                            <div id='shopDiv' className="col-md-4">
-                                <h3>Create an account</h3>
-                                <hr className='lineBreak'/>
-                                <h6>Let us know where you're at and we'll show you what local breweries are in your area.</h6>
-                            </div>
-                            <div id='shopDiv' style={{backgroundColor: '#cf944d',color: '#ffff'}} className="col-md-4">
-                                <h3>Shop</h3>
-                                <hr className='lineBreak'/>
-                                <h6>Browse that specific brewery for their crafted beers!</h6>
-                            </div>                        
-                            <div id='shopDiv' className="col-md-4">
-                                <h3>Get the party started!</h3>
-                                <hr className='lineBreak'/>
-                                <h6>Sit back and wait and we will let you know when your beers are on the way!</h6>           
-                            </div>
+                    <div className="row">
+                        <div style={{padding: '25px'}} className="col-md-12">
+                            <h1>How do I get my Brewskis?</h1>
+                            <hr className='lineBreak'/>
                         </div>
+                        <div className="col-md-6">
+                            <img style={{
+                                borderRadius: '25px',
+                                transform: 'rotate(-5deg)'}} 
+                                src={logo} alt=""/>
+                        </div>
+                        <div style={{ 
+                            transform: 'rotate(5deg)', 
+                            backgroundColor: 'black', 
+                            marginTop: '2%',
+                            borderRadius: '25px'}} 
+                            className="col-md-4"
+                        >
+                            <h1 style={{
+                                color: '#ffff', 
+                                fontSize: '40px', 
+                                marginTop: '20%'}}
+                            >
+                                Create an account
+                            </h1>
+                            <hr className='lineBreak'/>
+                            <h1 style={{color: '#ffff', fontWeight: '300'}}>Search Local Breweries in the West Palm Beach Area.</h1> 
+                        </div>
+                    </div>
+                    </Jumbotron>
+                    <Jumbotron>
+                    <div className="row">
+                     <div style={{ 
+                            transform: 'rotate(-5deg)', 
+                            backgroundColor: 'black', 
+                            marginTop: '2%',
+                            borderRadius: '25px',
+                            zIndex:3,
+                            padding: '50px'}} 
+                            className="col-md-4">
+                            <h1 style={{
+                                color: '#ffff', 
+                                fontSize: '40px', 
+                                marginTop: '20%'}}
+                            >
+                                Shop
+                            </h1>
+                            <hr className='lineBreak'/>
+                            <h1 style={{color: '#ffff', fontWeight: '300'}}>Browse that specific brewery for their crafted beers!</h1> 
+                        </div>
+                        <div style={{transform: 'rotate(5deg)'}} className="col-md-8">
+                            <img style={{borderRadius: '25px', marginRight: '50px', zIndex: 0}} src={secondImg}  height= '645' width = '950' alt=""/>
+                        </div>
+                        </div>
+                       </Jumbotron>
+
+                        <Jumbotron>
+                        <div className="row">
+                        <div className="col-md-8">
+                            <img style={{borderRadius: '25px',transform: 'rotate(-5deg)'}} src={reviewOne} alt=""/>
+                        </div>
+                        <div style={{ 
+                            transform: 'rotate(5deg)', 
+                            backgroundColor: 'black', 
+                            marginTop: '2%',
+                            borderRadius: '25px',
+                            zIndex: 3
+                            }} 
+                            className="col-md-4"
+                        >
+                            <h1 style={{
+                                color: '#ffff', 
+                                fontSize: '40px', 
+                                marginTop: '20%'
+                                }}
+                            >
+                                Get the party started!
+                            </h1>
+                            <hr className='lineBreak'/>
+                            <h1 style={{color: '#ffff', fontWeight: '300', zIndex: 0}}>Sit back and wait and we will let you know when your beers are on the way!</h1> 
+                        </div>
+                    </div>
+
                     </Jumbotron>
                     <Jumbotron>
                         <h1>Featured Beers</h1>

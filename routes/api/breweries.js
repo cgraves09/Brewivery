@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const brewController = require("../../controllers/brewController");
 
-// Matches with "/api/books"
+// Matches with "/api/breweries"
 router.route("/")
-  .get(brewController.findAll);
+  .get(brewController.findAll)
 
-// Matches with "/api/books/:id"
+// Matches with "/api/breweries/:id"
 router
   .route("/:id")
   .get(brewController.findById);

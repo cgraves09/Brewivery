@@ -21,13 +21,17 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.18.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "cors-anywhere": "^0.4.3",
     "express": "^4.16.3",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.20",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "react-bootstrap": "^1.0.1"
   }
 }
