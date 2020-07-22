@@ -1,12 +1,10 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const session = require('express-session');
 const passport = require('passport');
-
 require('./passport/localStrategy')(passport);
 //sessions
 app.use(
