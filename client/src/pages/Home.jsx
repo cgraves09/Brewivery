@@ -7,6 +7,7 @@ import reviewOne from '../images/homepage_roof.jpeg';
 import logo from '../images/hops.png';
 import secondImg from '../images/secondJumbo.jpg';
 import cover from '../images/cover.png';
+import Footer from '../components/footer';
 export default class Home extends Component {
     state = {
         beers: [],
@@ -155,7 +156,14 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </Jumbotron>
-                </div>                      
+                    
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h3 style={{textAlign: 'center'}}>&copy;2020 Copyright: Brewivery</h3>
+                        </div>
+                    </div>
+                </div>
+                                     
             )
         }            
     }
