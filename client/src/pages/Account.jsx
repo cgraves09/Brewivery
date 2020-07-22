@@ -145,7 +145,7 @@ class Account extends Component {
             )
         }
         if (!this.state.isAuth){
-          return <Redirect  to='/'/>;
+          return <Redirect  to='/signIn'/>;
           }
         
         else{
