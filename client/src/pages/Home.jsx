@@ -6,6 +6,7 @@ import Nav from '../components/Nav';
 import reviewOne from '../images/homepage_roof.jpeg';
 import logo from '../images/hops.png';
 import secondImg from '../images/secondJumbo.jpg';
+import cover from '../images/cover.png';
 export default class Home extends Component {
     state = {
         beers: [],
@@ -14,9 +15,11 @@ export default class Home extends Component {
     }
     componentDidMount(){
         API.getBreweries().then(result => {
-            this.setState({
-                isLoaded: true,
-                beers: result.data})
+            setTimeout(() => {
+                this.setState({
+                    isLoaded: true,
+                    beers: result.data})                
+            }, 4000);
         })        
     }
     handleChange = (event) => {
@@ -25,7 +28,7 @@ export default class Home extends Component {
 
     render() { 
         if(!this.state.isLoaded){
-            return <div>Loading...</div>
+            return (<img src={cover}/>)
         }else{
             return (
                 <div> 
