@@ -29,7 +29,7 @@ export default class Home extends Component {
         }else{
             return (
                 <div> 
-                    {/* <AgeModal /> */}
+                    <AgeModal />
                     <Nav />           
                     <div className="jumbotron" style={{height: '400px'}} id="heading" >
                         <div className="row">
