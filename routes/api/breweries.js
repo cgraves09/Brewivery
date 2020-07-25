@@ -3,7 +3,7 @@ const brewController = require("../../controllers/brewController");
 
 // Matches with "/api/breweries"
 router.route("/")
-  .get(brewController.findAll)
+  .get(brewController.findAll);
 
 // Matches with "/api/breweries/:id"
 router

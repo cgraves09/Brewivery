@@ -5,7 +5,7 @@ module.exports = {
     console.log(req.body)
     req.session.firstNam = req.body.firstNam;
     db.Client.create(req.body).then(dbModel => {
-      res.json(dbModel)
+      res.json(dbModel);
       }).catch(err => console.log(err));
   },
   findOne: function(req,res) {
@@ -20,6 +20,6 @@ module.exports = {
       else {
           res.json({message: 'Account Created'});
       }
-    })
-  }
-}
+    });
+  };
+};

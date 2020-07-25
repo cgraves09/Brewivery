@@ -8,9 +8,9 @@ router.post('/', (req, res, next) => {
 })
 router.get('/', (req,res)=> {
     const {firstNam, lastNam, phone, email, cooler} = req.session.passport.user;
-    console.log('Testing')
-    console.log(cooler)
+    console.log('Testing');
+    console.log(cooler);
     res.json(req.session.passport.user);
-    res.end()
+    res.end();
 })
 module.exports = router;

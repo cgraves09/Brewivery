@@ -32,7 +32,7 @@ class Account extends Component {
     componentDidMount(){
         this.setState({loadingMessage: 'Loading all of that cool account info!'});
         setTimeout(() => {
-        Brewery()
+        Brewery();
         this.UserInfo();
         API.getBreweries().then(result => {
             axios.get(`/api/cart/${this.state.id}`).then(res => {
@@ -113,8 +113,7 @@ class Account extends Component {
             setTimeout(() => {
               window.location.reload(false);
             }, 2000);            
-        }
-                            
+        }                    
       });
     }
 
@@ -175,11 +174,26 @@ class Account extends Component {
                             }}>Brewivery</h1>
                         </div>
                         <div  className="col-md-4">
-                                <button style={{textAlign: 'center',marginTop: '6%'}} className='btn btn-primary btn-lg' onClick={() => this.signOut()} tabIndex="-1" aria-disabled="true">Sign Out</button>                
+                                <button 
+                                  style={{
+                                    textAlign: 'center',
+                                    marginTop: '6%'}} 
+                                    className='btn btn-primary btn-lg' 
+                                    onClick={() => this.signOut()} 
+                                    tabIndex="-1" 
+                                    aria-disabled="true"
+                                  >
+                                  Sign Out
+                                </button>                
                         </div>
                     </div>
                     <div className="container">
-                        <div className="card" style={{textAlign: 'center', background: 'black'}}>
+                        <div 
+                        className="card" 
+                        style={{
+                          textAlign: 'center', 
+                          background: 'black'}}
+                        >
                           <div className="card-body">
                             <h1 className="card-text">Welcome back {this.state.firstNam}!</h1>
                             <hr className="lineBreak"/>
