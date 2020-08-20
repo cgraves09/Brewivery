@@ -1,29 +1,9 @@
-# Create React Express App
+# Brewivery
+Version 1.0.0
 
-## About This Boilerplate
+## App Rundown
+### Brewivery is an Delivery App that is interactive for the customer to purchase set items in the mongoDB database. While Creating an account utilizing passportJs authentication. Front-End built with React. Back-End built with NodeJS and Express. 
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
-
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
-
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## Running the App
+- Confirm that the packages have been installed into the correct folder this can be viewed in the package.json.
+- Opening up the terminal/command prompt cd into the correct folder of the app.
